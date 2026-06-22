@@ -10,8 +10,19 @@ Builds alternative firmware for the [Home Assistant Voice PE](https://github.com
 | --- | --- |
 | [`voice-pe-streaming-wakeword`](https://ohf-voice.github.io/voice-pe-alt-firmware/voice-pe-streaming-wakeword/) | Adds support for streaming wake word detection in Home Assistant, alongside on-device wake word detection. Based on [PR #599](https://github.com/esphome/home-assistant-voice-pe/pull/599). |
 
-### Adding more alternative firmwares
+### How the configs are structured
+
+Each buildable `voice-pe-*.yaml` is a small **factory wrapper** (modeled on
+upstream's `home-assistant-voice.factory.yaml`): it `!include`s a base config and
+adds the improv BLE/serial Wi-Fi provisioning stack. The wrapper is required —
+the bare base config has no Wi-Fi SSID/AP and won't build on its own.
+
+- `voice-pe-streaming-wakeword.yaml` — factory wrapper (the file that gets built)
+- `home-assistant-voice.yaml` — base config, copied verbatim from PR #599; this is
+  the only file the PR changes. Named so it doesn't match the `voice-pe-*` build
+  glob and so the wrapper's `!include` matches upstream as-is.
 
 The workflow builds every `voice-pe-*.yaml` in the repo root and publishes each at
 its own sub-path (e.g. `…/voice-pe-streaming-wakeword/`). To add another build,
-drop a new `voice-pe-<feature>.yaml` in the root — no workflow changes needed.
+add a `voice-pe-<feature>.yaml` wrapper (plus its base config) — no workflow
+changes needed.
