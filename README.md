@@ -1,4 +1,7 @@
-# Voice PE alternate firmware (streaming wake word PR build)
+> [!WARNING]
+> This project is experimental and not supported.
+
+# Voice PE alternate firmware
 
 Builds alternative firmware for the [Home Assistant Voice PE](https://github.com/esphome/home-assistant-voice-pe) and publishes an [ESP Web Tools](https://esphome.github.io/esp-web-tools/) install page to GitHub Pages.
 
