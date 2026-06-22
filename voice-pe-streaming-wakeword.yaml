@@ -14,6 +14,11 @@ packages:
   home-assistant-voice: !include home-assistant-voice.yaml
 
 esphome:
+  # Must match the base config's name: ESPHome builds into
+  # .esphome/build/<name>/, and ewt-gen reads `name` from THIS top-level file
+  # (it does not resolve the included package) to locate firmware.factory.bin.
+  # Without it, ewt-gen falls back to the filename stem and can't find the build.
+  name: home-assistant-voice
   project:
     name: Nabu Casa.Home Assistant Voice PE
     version: dev
