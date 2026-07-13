@@ -20,11 +20,6 @@ upstream's `home-assistant-voice.factory.yaml`): it `!include`s a base config an
 adds the improv BLE/serial Wi-Fi provisioning stack. The wrapper is required —
 the bare base config has no Wi-Fi SSID/AP and won't build on its own.
 
-- `voice-pe-streaming-wakeword.yaml` — factory wrapper (the file that gets built)
-- `home-assistant-voice.yaml` — base config, copied verbatim from PR #599; this is
-  the only file the PR changes. Named so it doesn't match the `voice-pe-*` build
-  glob and so the wrapper's `!include` matches upstream as-is.
-
 The workflow builds every `voice-pe-*.yaml` in the repo root and publishes each at
 its own sub-path (e.g. `…/voice-pe-streaming-wakeword/`). To add another build,
 add a `voice-pe-<feature>.yaml` wrapper (plus its base config) — no workflow
