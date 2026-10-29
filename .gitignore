@@ -2,3 +2,5 @@ site/
 .esphome/
 *.bin
 __pycache__/
+secrets.yaml
+*.factory.yaml
